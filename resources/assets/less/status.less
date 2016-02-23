@@ -1,0 +1,349 @@
+/**
+*    Copyright 2015 ppy Pty. Ltd.
+*
+*    This file is part of osu!web. osu!web is distributed with the hope of
+*    attracting more community contributions to the core ecosystem of osu!.
+*
+*    osu!web is free software: you can redistribute it and/or modify
+*    it under the terms of the Affero GNU General Public License version 3
+*    as published by the Free Software Foundation.
+*
+*    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
+*    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*    See the GNU Affero General Public License for more details.
+*
+*    You should have received a copy of the GNU Affero General Public License
+*    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
+*
+*/
+// main: compiled.less
+@import "app";
+
+@smallScreen: 0px;
+@medScreen: 610px;
+@bigScreen: 1220px;
+
+#statusPage {
+  .incidents__list {
+    .incident__state {
+      width: 34px;
+      height: 16px;
+      content: ' ';
+      float: left;
+      background: red;
+      border-radius: 4px;
+      margin: 10px;
+      margin-left: 20px;
+      margin-top: 4px;
+
+      @media (min-width: @smallScreen) and (max-width: @bigScreen) {
+        margin-left: 10px;
+      }
+
+      &.incident__state--resolved {
+        background: #A2CC00 !important;
+      }
+
+      &.incident__state--resolving {
+        background: #F5AA00 !important;
+      }
+
+      &.incident__state--unknown {
+        background: #F8329B !important;
+      }
+
+      &:before {
+        content: ' ';
+        width: 4px;
+        height: 74px;
+        position: absolute;
+        background: #999;
+        top: 16px;
+        left: 16px;
+      }
+
+      &:after {
+        content: ' ';
+        width: 4px;
+        height: 68px;
+        position: absolute;
+        background: #999;
+        top: -68px;
+        left: 16px;
+      }
+    }
+
+    .incident__content {
+      margin-top: 40px;
+      margin-bottom: 40px;
+
+      @media (min-width: @smallScreen) and (max-width: @bigScreen) {
+        padding-left: 10px;
+      }
+
+      .info {
+        .info__date {
+          font-weight: bold;
+          font-style: italic;
+        }
+
+        .info__by {
+          font-weight: 500;
+          color: #046590;
+          font-style: italic;
+        }
+
+      }
+
+      .desc {
+        font-size: 20px;
+        margin-left: 64px;
+
+        > span:first-child {
+          text-decoration: line-through;
+        
+          &.active {
+            text-decoration: none !important;
+          }
+        }
+
+        > span:last-child {
+          text-transform: capitalize;
+        }
+
+        @media (min-width: @smallScreen) and (max-width: @bigScreen) {
+          margin-left: 44px;          
+        }
+      }
+    }
+
+    > .incident {
+      &:first-child {
+        .incident__state:after {
+          background: transparent !important;
+        }
+      }
+
+      &:last-child {
+        .incident__state:before {
+          background: transparent !important;
+        }
+      }
+    }
+  }
+
+
+  .status {
+    @top: status;
+
+    .osu-layout__row--page-compact {
+      padding: 10px 20px;
+    }
+
+    &--container {
+      background: #fff;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+      padding: 8px 14px;
+    }
+
+    &__header {
+      .at2x-simple("../../images/headers/status.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: left center;
+      height: 136px;
+
+      margin-bottom: 10px;
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+
+      > .logo {
+        .at2x-simple('../../images/layout/osu-logo.png');
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        position: absolute;
+        background-repeat: no-repeat;
+        left: 24px;
+        top: 14px;
+      }
+
+      > .text {
+        padding-left: 140px;
+
+        h1 {
+          margin: 0;
+          padding-top: 20px;
+        }
+
+        h4 {
+          margin: 0;
+          color: #444;
+          font-weight: lighter;
+        }
+      }
+    }
+
+    &__incidents {
+      @border: 18px solid red;
+
+      border-top: @border;
+      border-bottom: @border;
+      border-bottom-color: #E30000;
+
+      > h1 {
+        padding-top: 20px;
+        padding-left: 20px;
+      }
+
+      &:extend(.incidents__list);
+    }
+
+    &__map {
+      background: #333;
+    }
+
+    &__online {
+      > h1 {
+        padding-top: 20px;
+        padding-left: 20px;
+      }
+
+      .online__info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        > .border {
+          padding-bottom: 20px;
+          border-bottom: 2px solid #C40E79;
+          box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+          width: 100%;
+        }
+
+        > .separator {
+          width: 2px;
+          margin-top: 7px;
+          margin-bottom: 4px;
+          box-shadow: none;
+          background: rgba(255,255,255,0.47);
+          background: -moz-linear-gradient(top, rgba(255,255,255,0.47) 0%, rgba(169,169,169,0.47) 100%);
+          background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0.47)), color-stop(100%, rgba(169,169,169,0.47)));
+          background: -webkit-linear-gradient(top, rgba(255,255,255,0.47) 0%, rgba(169,169,169,0.47) 100%);
+          background: -o-linear-gradient(top, rgba(255,255,255,0.47) 0%, rgba(169,169,169,0.47) 100%);
+          background: -ms-linear-gradient(top, rgba(255,255,255,0.47) 0%, rgba(169,169,169,0.47) 100%);
+          background: linear-gradient(to bottom, rgba(255,255,255,0.47) 0%, rgba(169,169,169,0.47) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#a9a9a9', GradientType=0 );
+        }
+
+        > .info__score, .info__users {
+          //width: 50%;
+          flex: 1;
+          cursor: pointer;
+          text-align: center;
+          transition: all 250ms;
+          transition-timing-function: ease;
+
+          > h4 {
+            color: #333 !important;
+            font-style: normal;
+          }
+
+          > h4, h1 {
+            font-weight: bold;
+          }
+
+          &.active {
+            border-top: 14px solid #C40E79;
+          }
+        }
+
+        > .info__users {
+          border-top: 14px solid transparent;
+        }
+
+        > .info__score {
+          border-top: 14px solid transparent;
+        }
+      }
+    }
+
+    &__recent {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+
+      .recent__incidents, .recent__uptime {
+        width: 49.5%;
+        padding: 10px 20px;
+
+        @media (min-width: @smallScreen) and (max-width: @bigScreen) {
+          width: 100%;
+        }
+
+        .uptime__when > *, .incidents__when > * {
+          display: inline;
+          margin-right: 22px;
+          color: #555;
+          font-size: 18px;
+          cursor: pointer;
+
+          &.active {
+            font-weight: bold;
+            color: #cc5288 !important;
+          }
+        }
+      }
+    
+      .recent__incidents {
+        margin-right: 0.5%;
+
+        @media (min-width: @smallScreen) and (max-width: @bigScreen) {
+          margin-right: 0;
+        }
+        &:extend(.incidents__list);
+      }
+
+      .recent__uptime {
+        margin-left: 0.5%;
+
+        @media (min-width: @smallScreen) and (max-width: @bigScreen) {
+          margin-left: 0;
+        }
+        .uptime__charts {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          
+          min-width: 350px;
+          min-height: 350px;
+          height: 100%;
+
+
+          > * {
+            width: 49%;
+            padding: 28px;
+            min-height: 350px;
+            height: 100%;
+            
+            @media (min-width: @smallScreen) and (max-width: @medScreen) {
+              width: 100%;
+              height: 100%;
+            }
+
+            &:first-child {
+              margin-right: 0.5%;
+            }
+
+            &:last-child {
+              margin-left: 0.5%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
