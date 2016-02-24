@@ -18,7 +18,6 @@
  *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
  */
 namespace App\Http\Controllers;
-use Lang;
 
 class StatusController extends Controller
 {
@@ -68,7 +67,7 @@ class StatusController extends Controller
                         'players' => 69,
                         'y' => 200,
                         'x' => 450,
-                        'state' => 'up', # green
+                        'state' => 'up', // green
                     ],
 
                     [
@@ -76,7 +75,7 @@ class StatusController extends Controller
                         'players' => '',
                         'y' => 350,
                         'x' => 150,
-                        'state' => 'down', # red
+                        'state' => 'down', // red
                     ],
 
                     [

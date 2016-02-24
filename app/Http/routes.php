@@ -164,7 +164,7 @@ Route::resource('modding', 'ModdingPostController');
 if (Config::get('app.debug')) {
     Route::get('/status', ['uses' => 'StatusController@getMain']);
 } else {
-    Route::group(['domain' => 'stat.ppy.sh'], function() {
+    Route::group(['domain' => 'stat.ppy.sh'], function () {
         Route::get('/', ['uses' => 'StatusController@getMain']);
     });
 }
