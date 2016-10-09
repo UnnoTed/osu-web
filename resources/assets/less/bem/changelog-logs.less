@@ -1,0 +1,83 @@
+/**
+ *    Copyright 2016 ppy Pty. Ltd.
+ *
+ *    This file is part of osu!web. osu!web is distributed with the hope of
+ *    attracting more community contributions to the core ecosystem of osu!.
+ *
+ *    osu!web is free software: you can redistribute it and/or modify
+ *    it under the terms of the Affero GNU General Public License version 3
+ *    as published by the Free Software Foundation.
+ *
+ *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
+ *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *    See the GNU Affero General Public License for more details.
+ *
+ *    You should have received a copy of the GNU Affero General Public License
+ *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+@import "../app";
+
+.changelog-logs {
+  text-align: center;
+
+  &__date {
+    font-size: 24px;
+    font-style: italic;
+  }
+
+  &__version {
+    color: @grey-5;
+
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  &__log {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+
+    padding: 10px 0;
+    border-bottom: 1px solid @grey-e;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+
+    @media @mobile {
+      width: 100%;
+    }
+  }
+
+  &__log-author {
+    text-align: left;
+    width: 180px; // or 30% at 2x
+    
+    > a {
+      color: @blue-darker;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 14px;
+    }
+  }
+
+  &__log-text {
+    text-align: left;
+    font-size: 13px;
+    width: 100%;
+  }
+
+  &__log-icon {
+    margin-right: 10px;
+    
+    // without this it bugs me that at 2x the
+    // plus sign is a bit off to the left side
+    // and at 1x the text is a bit off to the left side
+    &.fa.fa-plus {
+      padding-left: 1px;
+      padding-right: 1px;
+    }
+  }
+}

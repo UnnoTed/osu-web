@@ -16,3 +16,20 @@
     along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
 --}}
 @extends("master")
+@section("content")
+    {{--
+        this should content a server side react.js render which doesn't exist in hhvm
+        because the only library for it, which is experimental, requires PHP extension
+        which isn't supported by hhvm (v8js).
+    --}}
+    <div class="js-react--changelog-page"></div>
+@endsection
+@section ("script")
+    @parent
+
+    <script data-turbolinks-eval="always">
+        var changelogData = {!! json_encode($data['changelog']) !!};
+    </script>
+
+    <script src="{{ elixir("js/react/changelog-page.js") }}" data-turbolinks-eval="always" data-turbolinks-track></script>
+@endsection

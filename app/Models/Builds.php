@@ -21,41 +21,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Changelog extends Model
+class Builds extends Model
 {
     public $timestamps = false;
-    protected $table = 'osu_changelog';
-    protected $primaryKey = 'changelog_id';
+    protected $table = 'osu_builds';
+    protected $primaryKey = 'build_id';
 
-    // Changelog::all()->listing($offset)->get();
-    // Changelog::with('user', function($changelog) {
-    //
-    // }
-
-    public function scopeListing($query, $offset = 20)
-    {
-        $limit = config('osu.changelog.max', 20);
-
-        return $query
-            ->where('private', '=', 0)
-            ->take($limit)
-            ->skip($offset)
-            ->orderBy('changelog_id', 'desc');
-    }
-
-    public function scopeStream($query, $id, $offset = 0, $limit = 20)
-    {
+    public function scopeVersion($query, $id, $offset = 0, $limit = 20) {
         return $query
             ->where('stream_id', $id)
-            ->where('private', '=', 0)
             ->take($limit)
             ->skip($offset)
-            ->orderBy('changelog_id', 'desc')
             ->get();
     }
 
-    public function user()
-    {
-        return $this->hasOne('User');
+    public function scopeLatest($query, $id) {
+        return $query
+            ->where('stream_id', $id)
+            ->orderBy('build_id', 'desc')
+            ->take(1)
+            ->get();
     }
 }

@@ -39,6 +39,10 @@ class DatabaseSeeder extends Seeder
             // Miscellaneous Data (e.g. counts)
             $this->command->info('Seeding Miscellaneous Data');
             $this->call(MiscSeeder::class);
+
+            // Changelog and Builds
+            $this->command->info('Seeding Changelog and Builds...');
+            $this->call(ChangelogSeeder::class);
         } catch (ErrorException $er) {
             $this->command->error($er->getMessage());
         } catch (Exception $ex) {
