@@ -97,6 +97,10 @@ elixir(function(mix) {
     'react/status-page.coffee'
   ], 'public/js/react/status-page.js')
   .coffee([
+    'react/changelog-page/*.coffee',
+    'react/changelog-page.coffee'
+  ], 'public/js/react/changelog-page.js')
+  .coffee([
     'react/beatmap-discussions/*.coffee',
     'react/beatmap-discussions.coffee'
   ], 'public/js/react/beatmap-discussions.js')
@@ -107,6 +111,7 @@ elixir(function(mix) {
     'js/react/beatmaps.js',
     'js/react/slack-page.js',
     'js/react/status-page.js',
+    'js/react/changelog-page.js',
     'js/react/beatmap-discussions.js',
   ]);
 });

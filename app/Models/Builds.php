@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    Copyright 2015 ppy Pty. Ltd.
+ *    Copyright 2016 ppy Pty. Ltd.
  *
  *    This file is part of osu!web. osu!web is distributed with the hope of
  *    attracting more community contributions to the core ecosystem of osu!.
@@ -21,40 +21,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Changelog extends Model
+class Builds extends Model
 {
     public $timestamps = false;
-    protected $table = 'osu_changelog';
-    protected $primaryKey = 'changelog_id';
+    protected $table = 'osu_builds';
+    protected $primaryKey = 'build_id';
 
-    // Changelog::all()->listing($offset)->get();
-    // Changelog::with('user', function($changelog) {
-    //
-    // }
-
-    public function scopeListing($query, $offset = 20)
-    {
-        $limit = config('osu.changelog.max', 20);
-
-        return $query
-            ->where('private', '=', 0)
-            ->take($limit)
-            ->skip($offset)
-            ->orderBy('changelog_id', 'desc');
-    }
-
-    public function scopeStream($query, $id, $offset = 0, $limit = 20)
-    {
+    public function scopeVersion($query, $id, $offset = 0, $limit = 20) {
         return $query
             ->where('stream_id', $id)
-            ->where('private', '=', 0)
             ->take($limit)
             ->skip($offset)
             ->get();
-    }
-
-    public function user()
-    {
-        return $this->hasOne('User');
     }
 }

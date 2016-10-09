@@ -1,0 +1,64 @@
+/**
+ *    Copyright 2016 ppy Pty. Ltd.
+ *
+ *    This file is part of osu!web. osu!web is distributed with the hope of
+ *    attracting more community contributions to the core ecosystem of osu!.
+ *
+ *    osu!web is free software: you can redistribute it and/or modify
+ *    it under the terms of the Affero GNU General Public License version 3
+ *    as published by the Free Software Foundation.
+ *
+ *    osu!web is distributed WITHOUT ANY WARRANTY; without even the implied
+ *    warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *    See the GNU Affero General Public License for more details.
+ *
+ *    You should have received a copy of the GNU Affero General Public License
+ *    along with osu!web.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+@import "../app";
+
+div.changelog-header {
+  @stable-bg: "/images/headers/profile-covers/c1.jpg";
+  @stable_fallback-bg: "/images/headers/profile-covers/c2.jpg";
+  
+  @beta-bg: "/images/headers/profile-covers/c3.jpg";
+  @cutting_edge-bg: "/images/headers/profile-covers/c4.jpg";
+  @lazer-bg: "/images/headers/profile-covers/c5.jpg";
+
+  //.at2x-simple("/images/headers/profile-covers/c6.jpg");
+  background-image: url('/images/headers/profile-covers/c6.jpg');
+  transition: background-image 200ms linear;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+
+  padding: 2px 30px;
+
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+
+  &:extend(.default-box-shadow);
+
+  &--stable {
+    .at2x-simple(@stable-bg);
+  }
+
+  &--stable_fallback {
+    .at2x-simple(@stable_fallback-bg);
+  }
+
+  &--beta {
+    .at2x-simple(@beta-bg);
+  }
+
+  &--cutting_edge {
+    .at2x-simple(@cutting_edge-bg);
+  }
+
+  &--lazer {
+    .at2x-simple(@lazer-bg);
+  }
+}
